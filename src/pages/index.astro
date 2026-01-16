@@ -13,7 +13,8 @@ import logo from '../assets/logo_large.png?url';
       html, body { height: 100%; }
       body {
         margin: 0;
-        /* Prefer the dynamic viewport unit to avoid mobile browser UI offset, with a stable fallback */
+        /* Use the small viewport unit for most accurate mobile height, fall back to dynamic viewport and then classic 100vh. */
+        min-height: 100svh;
         height: 100dvh;
         min-height: 100vh;
         display: flex;
@@ -21,8 +22,10 @@ import logo from '../assets/logo_large.png?url';
         justify-content: center;
         background: var(--bg);
         -webkit-font-smoothing: antialiased;
+        padding-top: env(safe-area-inset-top);
+        padding-bottom: env(safe-area-inset-bottom);
       }
-      main { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; padding-top: env(safe-area-inset-top); padding-bottom: env(safe-area-inset-bottom); }
+      main { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; }
       .logo {
         filter: drop-shadow(0 0 24px var(--logo-glow));
         animation: float 4s ease-in-out infinite;

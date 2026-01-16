@@ -12,14 +12,16 @@ import logo from '../assets/logo_large.png?url';
       html, body { height: 100%; }
       body {
         margin: 0;
-        height: 100vh;
+        /* Prefer the dynamic viewport unit to avoid mobile browser UI offset, with a stable fallback */
+        height: 100dvh;
+        min-height: 100vh;
         display: flex;
         align-items: center;
         justify-content: center;
         background: var(--bg);
         -webkit-font-smoothing: antialiased;
       }
-      main { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; }
+      main { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; padding-top: env(safe-area-inset-top); padding-bottom: env(safe-area-inset-bottom); }
       .logo {
         filter: drop-shadow(0 0 24px var(--logo-glow));
         animation: float 4s ease-in-out infinite;

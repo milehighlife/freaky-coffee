@@ -13,11 +13,12 @@ import logo from '../assets/logo_large.png?url';
       html, body { height: 100%; }
       body {
         margin: 0;
-        /* Fallback order: classic -> dynamic -> small viewport. Browsers that
-           support newer units will override earlier declarations. */
-        min-height: 100vh;
-        min-height: 100dvh;
-        min-height: 100svh;
+      /* Fallback order: classic -> dynamic. Browsers that
+         support newer units will override earlier declarations. */
+      height: 100vh;
+      height: 100dvh;
+      min-height: 100vh;
+      min-height: 100dvh;
         background: var(--bg);
         -webkit-font-smoothing: antialiased;
       }
@@ -29,10 +30,11 @@ import logo from '../assets/logo_large.png?url';
         display: grid;
         place-items: center;
         width: 100%;
-        /* Fallback order: classic -> dynamic -> small viewport. */
+        /* Fallback order: classic -> dynamic. */
+        height: 100vh;
+        height: 100dvh;
         min-height: 100vh;
         min-height: 100dvh;
-        min-height: 100svh;
         box-sizing: border-box;
         /* Let `main` absorb safe-area insets so the centering math is consistent. */
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);

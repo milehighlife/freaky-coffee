@@ -23,21 +23,21 @@ import logo from '../assets/logo_large.png?url';
         background: var(--bg);
         -webkit-font-smoothing: antialiased;
       }
-      /* Move safe-area padding into `main` so the flex container (`body`) centers
-         against the true viewport. This avoids centering shifts between Safari
-         and Chrome caused by body padding reducing the flex container's content box. */
+      /* Use a single full-viewport grid container that owns centering and
+         safe-area insets. Grid `place-items: center` is robust across
+         browsers and avoids subtle flex/content-box differences that can
+         shift visual centering on iOS Chrome. */
       main {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        display: grid;
+        place-items: center;
         width: 100%;
-        /* Ensure `main` fills the viewport while accounting for mobile UI chrome. */
+        /* Prefer the small viewport height, then dynamic, then classic 100vh. */
         min-height: 100svh;
         height: 100dvh;
         min-height: 100vh;
         box-sizing: border-box;
-        padding-top: env(safe-area-inset-top);
-        padding-bottom: env(safe-area-inset-bottom);
+        /* Let `main` absorb safe-area insets so the centering math is consistent. */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
       }
       .logo {
         filter: drop-shadow(0 0 24px var(--logo-glow));
@@ -45,7 +45,8 @@ import logo from '../assets/logo_large.png?url';
         width: auto;
         max-width: min(70vw, 480px);
         height: auto;
-        display: block;
+        display: block; /* ensure no inline baseline spacing */
+        margin: 0; /* be explicit so no user-agent margins affect centering */
       }
       @keyframes float {
         0% { transform: scale(1) rotate(0deg); }

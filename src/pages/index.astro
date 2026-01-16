@@ -9,7 +9,7 @@ import logo from '../assets/logo_large.png?url';
     <title>Freaky Coffee | Weirdly Good Beans</title>
     <meta name="description" content="Coffee for night owls, punk rockers, and freaks everywhere. Freaky Coffee brews bold flavor with good vibes. Sip responsibly. Froth mischievously." />
     <style>
-      :root { --bg: #4e02a5; --logo-glow: rgba(255,225,0,0.25); }
+      :root { --bg: #4e02a5; }
       html, body { height: 100%; }
       body {
         margin: 0;
@@ -40,7 +40,6 @@ import logo from '../assets/logo_large.png?url';
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
       }
       .logo {
-        filter: drop-shadow(0 0 24px var(--logo-glow));
         animation: float 4s ease-in-out infinite;
         width: auto;
         max-width: min(70vw, 480px);
@@ -49,9 +48,18 @@ import logo from '../assets/logo_large.png?url';
         margin: 0; /* be explicit so no user-agent margins affect centering */
       }
       @keyframes float {
-        0% { transform: scale(1) rotate(0deg); }
-        50% { transform: scale(1.15) rotate(-1deg); }
-        100% { transform: scale(1) rotate(0deg); }
+        0% {
+          transform: scale(1) rotate(0deg);
+          filter: drop-shadow(0 0 20px rgba(255, 225, 0, 0.18));
+        }
+        50% {
+          transform: scale(1.15) rotate(-1deg);
+          filter: drop-shadow(0 0 32px rgba(255, 225, 0, 0.5));
+        }
+        100% {
+          transform: scale(1) rotate(0deg);
+          filter: drop-shadow(0 0 20px rgba(255, 225, 0, 0.18));
+        }
       }
     </style>
   </head>

@@ -44,3 +44,19 @@ All commands are run from the root of the project, from a terminal:
 ## 👀 Want to learn more?
 
 Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+
+## Temporary Landing Page
+
+This project includes a simple temporary full-screen landing page for Freaky Coffee.
+
+- **Run locally:**
+
+```bash
+npm install
+npm run dev
+```
+
+- **Background color:** change the `--bg` value in `src/pages/index.astro`.
+- **Swap the logo:** replace the file at `src/assets/logo_large.png` or update the import in `src/pages/index.astro`.
+
+The landing page is a minimal semantic HTML page that centers the logo, applies a subtle looping scale/rotate animation (4s), and a soft drop-shadow glow. The logo is constrained to `max-width: 70vw` for mobile-friendly scaling.

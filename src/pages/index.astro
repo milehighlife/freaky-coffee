@@ -13,13 +13,11 @@ import logo from '../assets/logo_large.png?url';
       html, body { height: 100%; }
       body {
         margin: 0;
-        /* Use the small viewport unit for most accurate mobile height, fall back to dynamic viewport and then classic 100vh. */
-        min-height: 100svh;
-        height: 100dvh;
+        /* Fallback order: classic -> dynamic -> small viewport. Browsers that
+           support newer units will override earlier declarations. */
         min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        min-height: 100dvh;
+        min-height: 100svh;
         background: var(--bg);
         -webkit-font-smoothing: antialiased;
       }
@@ -31,10 +29,10 @@ import logo from '../assets/logo_large.png?url';
         display: grid;
         place-items: center;
         width: 100%;
-        /* Prefer the small viewport height, then dynamic, then classic 100vh. */
-        min-height: 100svh;
-        height: 100dvh;
+        /* Fallback order: classic -> dynamic -> small viewport. */
         min-height: 100vh;
+        min-height: 100dvh;
+        min-height: 100svh;
         box-sizing: border-box;
         /* Let `main` absorb safe-area insets so the centering math is consistent. */
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
